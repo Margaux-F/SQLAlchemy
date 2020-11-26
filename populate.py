@@ -1,12 +1,13 @@
-# UTF-8
-# Author : Margaux Faurie
-# Date : 19 Nov. 2020
+# UTF8
+# Date: 26 Nov. 2020
+# Author: Margaux Faurie
+
 
 import json
 import datetime
 from connection import connect
 from random import shuffle
-from models import authors, nation, books
+from models import books, authors, nation
 
 
 def populate(dbname, jsondata):
@@ -27,6 +28,8 @@ def populate(dbname, jsondata):
         session.add(Authors)
 
     for i in data['Nation']:
-        Nation = nation(country = i["Name"])
+        Nation = nation(Name = i["Name"])
 
     session.commit()
+
+    
