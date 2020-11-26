@@ -30,9 +30,20 @@ def createtables(name):
     Nation = Table(
         'Nation', metadata,
         Column('id', Integer, primary_key = True),
-        Column('Country', Integer, nullable = True)
+        Column('Name', Integer, nullable = True)
         
     )
+
+    books = Table(
+        'books', metadata,
+        Column('id', Integer, primary_key = True), 
+        Column('Title', String(40), nullable = True),
+        Column('Author',Integer , ForeignKey('authors.id')),
+    )
+
+
+    # Create all tables
+    metadata.create_all(engin)
 
     books = Table(
         'books', metadata,
