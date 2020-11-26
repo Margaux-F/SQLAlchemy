@@ -1,6 +1,7 @@
-# UTF-8
-# Author : Margaux Faurie
-# Date : 19 Nov. 2020
+
+# UTF8
+# Date: 26 Nov. 2020
+# Author: Margaux Faurie
 
 import json
 from urllib.request import urlopen
@@ -24,7 +25,6 @@ def checkdb(name):
             return True
         else:
             return False
-
 
 
 def createdb(name):
@@ -52,10 +52,12 @@ def connect(name):
         host = config["host"]
         port = config["port"]
 
-        engine = create_engine(f'mysql+pymysql://{username}:{password}@{host}/\
-        {name}?host={host}?port={port}',
-            echo=False, encoding='utf8',
+        engine = create_engine(
+            f'mysql+pymysql://{username}:{password}@{host}/\
+{name}?host={host}?port={port}',
+            echo=False, encoding='utf8', pool_recycle=60000,
             pool_pre_ping=True)
+
         Session = sessionmaker(bind=engine)
         session = Session()
 
