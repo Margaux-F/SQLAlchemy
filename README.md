@@ -1,13 +1,7 @@
 # SQLAlchemy
 
 
-Create a database (book list) in mysql with sqlalchemy
+This program creates a database (book list) in mysql with sqlalchemy
 
-/!\ The 'config.json' file was deleted for security issues. Create yours following the template :
+To run it correctly, you have to write your USERNAME and PASSWORD in the CONFIG.JSON file.
 
-{
-  "username" : "your user name here",
-  "password" : "your password here",
-  "host" : "your host here",
-  "port" : "your port here"
-}
