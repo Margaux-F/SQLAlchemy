@@ -1,7 +1,16 @@
-# UTF-8
-# Author : Margaux Faurie
-# Date : 26 Nov. 2020 14h56
+# UTF8
+# Date: 26 Nov. 15h39
+# Author: Margaux Faurie
 
+import json
+from sqlalchemy.orm import sessionmaker, query
+from connection import connect, createdb, checkdb
+from datetime import datetime
+from createtables import createtables
+from populate import populate
+import sqlalchemy as db
+from models import books
+import pandas as pd
 
 #-----------------------------
 # Create the database --> C
@@ -46,11 +55,11 @@ def Checkdb(dbname):
         print("Your database already exists.")
         print('Do you want to delete the tables to run the program anyway ?')
         print('1 = Delete the tables and recreate others.\n')
-        
+
         try:
             Choice = int(input('Your choice : '))
         except ValueError:
-            print("The input is not right...")
+            print("The input is not right...\n")
             prgrm = 0
             return prgrm
 
@@ -60,11 +69,10 @@ def Checkdb(dbname):
 
             session = connect(dbname) #Connect to the database
 
-            metadata = db.MetaData()
+            query = db.delete(books)
+            results = connection.execute(query)
 
-            metadata.drop_all(engine)
-            
-            createtables(dbname) #Create the tables
+
             populate(dbname, rawdata) #Populate the database
             return prgrm
         else : 
