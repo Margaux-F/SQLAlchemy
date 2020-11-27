@@ -23,7 +23,7 @@ def populate(dbname, jsondata):
 
     for i in data['authors']:
         Authors = authors(First_Name = i["First_Name"],
-                           Last_Name = i["Last_Name"],
+                           Last_Name = i["Last_Name"]
                            )
         session.add(Authors)
 
@@ -31,5 +31,3 @@ def populate(dbname, jsondata):
         Nation = nation(Name = i["Name"])
 
     session.commit()
-
-    
